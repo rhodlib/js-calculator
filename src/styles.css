@@ -3,6 +3,11 @@
   padding: 0px;
 }
 
+@font-face {
+  font-family: "digital-7";
+  src: url("./fonts/digital-7-mono.ttf");
+}
+
 html {
   height: 100vh;
 }
@@ -24,6 +29,36 @@ header {
   padding-top: 2em;
 }
 
+h1 {
+  font-family: "digital-7";
+  font-size: 3em;
+}
+
 footer {
   padding-bottom: 2em;
+  font-family: "digital-7";
+  font-size: 1.5em;
+}
+
+.display {
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 450px;
+  height: 100px;
+}
+
+.number-pad {
+  width: 450px;
+  height: 450px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+}
+
+.number-pad button {
+  margin: 0;
+  font-family: "digital-7";
+  font-size: x-large;
 }
