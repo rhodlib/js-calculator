@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: "digital-7";
-  src: url("./fonts/digital-7-mono.ttf");
+  src: url("src/fonts/digital-7-mono.ttf");
 }
 
 html {

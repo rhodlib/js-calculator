@@ -6,3 +6,22 @@ function back(str){
 function subtraction(a, b){
     return a - b
 }
+
+function multiply(a,b){
+    return a * b
+}
+
+function divide(a,b){
+    return a / b
+}
+
+function sum(a,b){
+    return a + b
+}
+
+const parseMethod = (operator, a, b) => ({
+    "+": sum(a,b),
+    "-": subtraction(a,b),
+    "/": divide(a,b),
+    "*": multiply(a,b)
+}[operator])

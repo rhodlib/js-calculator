@@ -7,29 +7,42 @@
         result: 0,
         action: "",
     }
-
     for(let button of buttons){
         button.addEventListener("click", (event) => {
             const char = event.currentTarget.textContent;
 
-            if(char === "back"){
-                displayBottom.textContent = back(displayBottom.textContent);
-            }
-            if(char === "C"){
-                displayBottom.textContent = "";
-                displayTop.textContent = "";
-            }
-            if(char === "CE"){
-                displayBottom.textContent = "";
-            }
-            if(Number.isNaN(Number(char))){
-                displayTop.textContent = `displayBottom.textContent`;
-                calculator.result = Number(displayBottom.textContent)
-                calculator.action = char
-            }
-            else {
+            if(!Number.isNaN(parseInt(char))){
                 displayBottom.textContent += char;
+            }else{
+                switch(char){
+                    case "back":
+                        displayBottom.textContent = back(displayBottom.textContent);
+                        break;
+                    case "C":
+                        displayBottom.textContent = "";
+                        displayTop.textContent = "";
+                        calculator.result = 0
+                        calculator.action = ""
+                        break;
+                    case "CE":
+                        displayBottom.textContent = "";
+                        break;
+                    case "=":
+                        calculator.result = parseMethod(calculator.action, calculator.result, parseInt(displayBottom.textContent));
+                        displayTop.textContent = `${calculator.result} ${char}`;
+                        displayBottom.textContent = "";
+                        break;
+                    default:
+                        displayTop.textContent = `${displayBottom.textContent} ${char}`;
+                        calculator.result = parseInt(displayBottom.textContent)
+                        calculator.action = char
+                        displayBottom.textContent = "";
+                        break
+    
+                }
             }
+            
+
         })
     }
 })()
