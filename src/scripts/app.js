@@ -29,14 +29,20 @@
                         break;
                     case "=":
                         calculator.result = parseMethod(calculator.action, calculator.result, parseInt(displayBottom.textContent));
+                        calculator.action = char;
                         displayTop.textContent = `${calculator.result} ${char}`;
                         displayBottom.textContent = "";
                         break;
                     default:
-                        displayTop.textContent = `${displayBottom.textContent} ${char}`;
-                        calculator.result = parseInt(displayBottom.textContent)
-                        calculator.action = char
-                        displayBottom.textContent = "";
+                        if(calculator.action === "="){
+                            displayTop.textContent = displayTop.textContent.slice(0, -1) + char;
+                            calculator.action = char;
+                        }else{
+                            displayTop.textContent = `${displayBottom.textContent} ${char}`;
+                            calculator.result = parseInt(displayBottom.textContent)
+                            calculator.action = char
+                            displayBottom.textContent = "";
+                        }
                         break
     
                 }
