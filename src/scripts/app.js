@@ -12,7 +12,9 @@
             const char = event.currentTarget.textContent;
 
             if(!Number.isNaN(parseInt(char))){
-                displayBottom.textContent += char;
+                if(!displayBottom.textContent.includes(0) || displayBottom.textContent.includes(".")){
+                    displayBottom.textContent += char;
+                }
             }else{
                 switch(char){
                     case "back":
@@ -35,10 +37,19 @@
                     case "=":
                         if(calculator.action !== "="){
                             calculator.result = parseMethod(calculator.action, calculator.result, parseFloat(displayBottom.textContent));
-                            console.log(calculator.result)
                             calculator.action = char;
                             displayTop.textContent = `${calculator.result} ${char}`;
                             displayBottom.textContent = "";
+                        }
+                        break;
+                    case "²√x":
+                        calculator.result = Math.sqrt(parseFloat(displayBottom.textContent))
+                        displayTop.textContent = calculator.result
+                        displayBottom.textContent = ""
+                        break;
+                    case "+/-":
+                        if(displayBottom.textContent){
+                            displayBottom.textContent = displayBottom.textContent.includes("-") ? displayBottom.textContent.slice(1) : `-${displayBottom.textContent}`;
                         }
                         break;
                     default:
@@ -46,10 +57,15 @@
                             displayTop.textContent = displayTop.textContent.slice(0, -1) + char;
                             calculator.action = char;
                         }else{
-                            displayTop.textContent = `${displayBottom.textContent} ${char}`;
-                            calculator.result = parseFloat(displayBottom.textContent)
-                            calculator.action = char
-                            displayBottom.textContent = "";
+                            if(!calculator.action && displayTop.textContent){
+                                displayTop.textContent = `${displayTop.textContent} ${char}`;
+                                calculator.action = char;
+                            }else{
+                                displayTop.textContent = `${displayBottom.textContent} ${char}`;
+                                calculator.result = parseFloat(displayBottom.textContent)
+                                calculator.action = char
+                                displayBottom.textContent = "";
+                            }
                         }
                         break
     
