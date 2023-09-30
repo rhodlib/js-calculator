@@ -27,11 +27,19 @@
                     case "CE":
                         displayBottom.textContent = "";
                         break;
+                    case ",":
+                        if(!displayBottom.textContent.includes(".")){
+                            displayBottom.textContent += "."
+                        }
+                        break;
                     case "=":
-                        calculator.result = parseMethod(calculator.action, calculator.result, parseInt(displayBottom.textContent));
-                        calculator.action = char;
-                        displayTop.textContent = `${calculator.result} ${char}`;
-                        displayBottom.textContent = "";
+                        if(calculator.action !== "="){
+                            calculator.result = parseMethod(calculator.action, calculator.result, parseFloat(displayBottom.textContent));
+                            console.log(calculator.result)
+                            calculator.action = char;
+                            displayTop.textContent = `${calculator.result} ${char}`;
+                            displayBottom.textContent = "";
+                        }
                         break;
                     default:
                         if(calculator.action === "="){
@@ -39,7 +47,7 @@
                             calculator.action = char;
                         }else{
                             displayTop.textContent = `${displayBottom.textContent} ${char}`;
-                            calculator.result = parseInt(displayBottom.textContent)
+                            calculator.result = parseFloat(displayBottom.textContent)
                             calculator.action = char
                             displayBottom.textContent = "";
                         }
