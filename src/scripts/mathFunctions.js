@@ -19,9 +19,13 @@ function sum(a,b){
     return a + b
 }
 
+function pow(a){
+    return a ** 2
+}
+
 const parseMethod = (operator, a, b) => ({
     "+": sum(a,b),
     "-": subtraction(a,b),
     "/": divide(a,b),
-    "*": multiply(a,b)
+    "*": multiply(a,b),
 }[operator])

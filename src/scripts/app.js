@@ -47,6 +47,11 @@
                         displayTop.textContent = calculator.result
                         displayBottom.textContent = ""
                         break;
+                    case "x2":
+                            calculator.result = parseFloat(displayBottom.textContent) ** 2
+                            displayTop.textContent = calculator.result
+                            displayBottom.textContent = ""
+                            break;    
                     case "+/-":
                         if(displayBottom.textContent){
                             displayBottom.textContent = displayBottom.textContent.includes("-") ? displayBottom.textContent.slice(1) : `-${displayBottom.textContent}`;
@@ -57,8 +62,12 @@
                             displayTop.textContent = displayTop.textContent.slice(0, -1) + char;
                             calculator.action = char;
                         }else{
-                            if(!calculator.action && displayTop.textContent){
-                                displayTop.textContent = `${displayTop.textContent} ${char}`;
+                            if(displayTop.textContent){
+                                if(!calculator.result){
+                                    displayTop.textContent = `${displayTop.textContent} ${char}`;
+                                }else{
+                                    displayTop.textContent = displayTop.textContent.slice(0, -1) + char;
+                                }
                                 calculator.action = char;
                             }else{
                                 displayTop.textContent = `${displayBottom.textContent} ${char}`;
