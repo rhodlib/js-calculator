@@ -4,23 +4,23 @@ function back(str){
 }
 
 function subtraction(a, b){
-    return a - b
+    return a - b;
 }
 
 function multiply(a,b){
-    return a * b
+    return a * b;
 }
 
 function divide(a,b){
-    return a / b
+    return a / b;
 }
 
 function sum(a,b){
-    return a + b
+    return a + b;
 }
 
-function pow(a){
-    return a ** 2
+function mod(a,b){
+    return a % b;
 }
 
 const parseMethod = (operator, a, b) => ({
@@ -28,4 +28,5 @@ const parseMethod = (operator, a, b) => ({
     "-": subtraction(a,b),
     "/": divide(a,b),
     "*": multiply(a,b),
+    "%": mod(a,b),
 }[operator])
