@@ -1,5 +1,6 @@
 (function(){
     const buttons = document.querySelectorAll("button");
+    const body = document.querySelector("body");
     const displayBottom = document.getElementById("display-bottom");
     const displayTop = document.getElementById("display-top");
 
@@ -7,6 +8,13 @@
         result: 0,
         action: "",
     }
+
+    body.addEventListener("keydown", (event) => {
+        if(!Number.isNaN(parseInt(event.key)) || event.key === "." && !displayBottom.textContent.includes(".")){
+            displayBottom.textContent += event.key
+        }
+    })
+
     for(let button of buttons){
         button.addEventListener("click", (event) => {
             const char = event.currentTarget.textContent;
