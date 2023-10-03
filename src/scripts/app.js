@@ -56,9 +56,16 @@
                         displayBottom.textContent = ""
                         break;
                     case "x2":
-                            calculator.result = parseFloat(displayBottom.textContent) ** 2
-                            displayTop.textContent = calculator.result
-                            displayBottom.textContent = ""
+                            if(!displayBottom.textContent && displayTop.textContent){
+                                let result = parseFloat(displayTop.textContent.slice(0, -1)) ** 2
+                                calculator.result = result
+                                calculator.action = "="
+                                displayTop.textContent = `${result} =`
+                            }else{
+                                calculator.result = parseFloat(displayBottom.textContent) ** 2
+                                displayTop.textContent = `${calculator.result} =`
+                                displayBottom.textContent = ""
+                            }
                             break;    
                     case "+/-":
                         if(displayBottom.textContent){
