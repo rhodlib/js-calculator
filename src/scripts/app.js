@@ -38,6 +38,7 @@
                         displayBottom.textContent = "";
                         break;
                     case ",":
+                        if(!displayBottom.textContent && !displayTop.textContent) break
                         if(!displayBottom.textContent.includes(".")){
                             displayBottom.textContent += "."
                         }
@@ -51,11 +52,19 @@
                         }
                         break;
                     case "²√x":
-                        calculator.result = Math.sqrt(parseFloat(displayBottom.textContent))
-                        displayTop.textContent = calculator.result
-                        displayBottom.textContent = ""
+                        if(!displayBottom.textContent && !displayTop.textContent) break
+                        if(!displayBottom.textContent && displayTop.textContent){
+                            let result = Math.sqrt(parseFloat(displayTop.textContent.slice(0, -1)))
+                            calculator.result = result;
+                            displayTop.textContent = `${result} =`
+                        }else{
+                            calculator.result = Math.sqrt(parseFloat(displayBottom.textContent))
+                            displayTop.textContent = `${calculator.result} =`
+                            displayBottom.textContent = ""
+                        }
                         break;
                     case "x2":
+                            if(!displayBottom.textContent && !displayTop.textContent) break
                             if(!displayBottom.textContent && displayTop.textContent){
                                 let result = parseFloat(displayTop.textContent.slice(0, -1)) ** 2
                                 calculator.result = result
@@ -73,6 +82,7 @@
                         }
                         break;
                     default:
+                        if(!displayBottom.textContent && !displayTop.textContent) break
                         if(calculator.action === "="){
                             displayTop.textContent = displayTop.textContent.slice(0, -1) + char;
                             calculator.action = char;
