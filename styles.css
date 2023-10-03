@@ -10,6 +10,7 @@
 
 html {
   height: 100vh;
+  overflow-x: hidden;
 }
 
 body {
@@ -21,21 +22,22 @@ body {
 }
 
 main {
-  width: 500px;
-  height: 600px;
+  padding: 1em;
 }
 
 header {
-  padding-top: 2em;
+  padding-top: 1em;
 }
 
 h1 {
   font-family: "digital-7";
   font-size: 3em;
+  padding: 1em;
+  text-align: center;
 }
 
 footer {
-  padding-bottom: 2em;
+  padding-bottom: 1em;
   font-family: "digital-7";
   font-size: 1.5em;
 }
@@ -43,10 +45,9 @@ footer {
 .display {
   display: flex;
   flex-direction: column;
-  margin: auto;
-  margin-top: 1em;
+  justify-content: space-between;
+  padding: 0.5em;
   margin-bottom: 1em;
-  width: 450px;
   height: 100px;
 }
 
@@ -55,25 +56,14 @@ footer {
   display: flex;
   justify-content: end;
   align-items: center;
-  height: 50px;
-  width: 450px;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
   font-size: xx-large;
   font-family: "digital-7";
 }
 
-#display-bottom {
-  font-size: 3em;
-}
-
 .number-pad {
-  width: 450px;
-  height: 450px;
-  margin: auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1em;
+  gap: 0.8em;
 }
 
 .number-pad button {
