@@ -13,6 +13,9 @@
         if(!Number.isNaN(parseInt(event.key)) || event.key === "." && !displayBottom.textContent.includes(".")){
             displayBottom.textContent += event.key
         }
+        if(event.key === "Backspace"){
+            displayBottom.textContent = back(displayBottom.textContent);
+        }
     })
 
     for(let button of buttons){

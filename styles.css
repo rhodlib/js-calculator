@@ -13,6 +13,25 @@ html {
   overflow-x: hidden;
 }
 
+main {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#history {
+  position: absolute;
+  right: 0;
+  width: 300px;
+}
+
+@media (max-width: 1000px) {
+  #history {
+    display: none;
+  }
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -21,7 +40,7 @@ body {
   height: 100vh;
 }
 
-main {
+.calculator {
   padding: 1em;
 }
 
@@ -32,7 +51,8 @@ header {
 h1 {
   font-family: "digital-7";
   font-size: 3em;
-  padding: 1em;
+  padding: 0.5em;
+  line-height: 1em;
   text-align: center;
 }
 
