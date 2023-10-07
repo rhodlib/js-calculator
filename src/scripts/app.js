@@ -3,6 +3,7 @@
     const body = document.querySelector("body");
     const displayBottom = document.getElementById("display-bottom");
     const displayTop = document.getElementById("display-top");
+    const historyContainer = document.getElementById("history-list");
 
     const calculator = {
         result: 0,
@@ -48,9 +49,14 @@
                         break;
                     case "=":
                         if(calculator.action !== "="){
-                            calculator.result = parseMethod(calculator.action, calculator.result, parseFloat(displayBottom.textContent));
+                            let tempResult = parseMethod(calculator.action, calculator.result, parseFloat(displayBottom.textContent));
+                            let newHistory = `${calculator.result} ${calculator.action} ${parseFloat(displayBottom.textContent)} = ${tempResult}`
+                            let liItem = document.createElement('li')
+                            liItem.textContent = newHistory
+                            historyContainer.appendChild(liItem)
+                            calculator.result = tempResult;
                             calculator.action = char;
-                            displayTop.textContent = `${calculator.result} ${char}`;
+                            displayTop.textContent = `${tempResult} ${char}`;
                             displayBottom.textContent = "";
                         }
                         break;
